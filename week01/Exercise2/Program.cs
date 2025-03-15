@@ -4,8 +4,17 @@ class Program
 {
     static void Main(string[] args)
     {
+        // Demander à l'utilisateur son pourcentage de note
         Console.Write("What is your grade percentage? ");
-        int gradePercentage = int.Parse(Console.ReadLine());
+        int gradePercentage;
+        
+        // Vérification pour garantir une entrée valide
+        while (!int.TryParse(Console.ReadLine(), out gradePercentage) || gradePercentage < 0 || gradePercentage > 100)
+        {
+            Console.WriteLine("Please enter a valid grade percentage between 0 and 100.");
+        }
+
+        // Déterminer le dernier chiffre pour le symbole (+ ou -)
         int lastNumber = gradePercentage % 10;
         string symbol = "";
 
@@ -18,6 +27,7 @@ class Program
             symbol = "-";
         }
 
+        // Déterminer la lettre correspondant à la note
         string letterGrade;
         if (gradePercentage >= 90)
         {
@@ -40,7 +50,10 @@ class Program
             letterGrade = "F";
         }
 
+        // Afficher le résultat final avec le symbole
         Console.WriteLine($"Your letter grade is: {letterGrade}{symbol}");
+
+        // Vérifier si l'utilisateur a réussi ou non
         if (gradePercentage >= 70)
         {
             Console.WriteLine("You passed");
