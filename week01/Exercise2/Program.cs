@@ -4,31 +4,50 @@ class Program
 {
     static void Main(string[] args)
     {
-        random randomGenrarator = new random();   
-        int randomNumber = randomGenrarator.next(1,100) ;
-          int guess = 0 
-          bool hasGuessed = false;
-          console.Write("Guess a number betwenn 1 and 100");
-           while(!hasGuessed)
-           {
-            console.Write("what is the magic number?");
-            if (int .tryParse(console.readline(),out guess);)
-           }
-            if (guess > randomNumber)}
-} consle.WriteLine("Higher");
+        Console.Write("What is your grade percentage? ");
+        int gradePercentage = int.Parse(Console.ReadLine());
+        int lastNumber = gradePercentage % 10;
+        string symbol = "";
 
-esle if(guess < randomNumber
-{
-    consle.WriteLine("lower");
-}
-else
-{
-    consle.writeling("you guesses it");
-    hasGuessed = true;
-}
-else
-{
-    console.writeling("try again")
-}
+        if (lastNumber >= 7)
+        {
+            symbol = "+";
+        }
+        else if (lastNumber < 3)
+        {
+            symbol = "-";
+        }
 
+        string letterGrade;
+        if (gradePercentage >= 90)
+        {
+            letterGrade = "A";
+        }
+        else if (gradePercentage >= 80)
+        {
+            letterGrade = "B";
+        }
+        else if (gradePercentage >= 70)
+        {
+            letterGrade = "C";
+        }
+        else if (gradePercentage >= 60)
+        {
+            letterGrade = "D"; 
+        }
+        else
+        {
+            letterGrade = "F";
+        }
 
+        Console.WriteLine($"Your letter grade is: {letterGrade}{symbol}");
+        if (gradePercentage >= 70)
+        {
+            Console.WriteLine("You passed");
+        }
+        else
+        {
+            Console.WriteLine("Better luck next time");
+        }
+    }
+}
