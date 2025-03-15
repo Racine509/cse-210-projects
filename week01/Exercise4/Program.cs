@@ -1,46 +1,67 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 class Program
 {
     static void Main(string[] args)
     {
-        list<int> numbers = new  list<int>();
-        console.writeling(enter the list of numbers , type 0 when finished);
+        // Initialiser la liste des nombres
+        List<int> numbers = new List<int>();
+        Console.WriteLine("Enter the list of numbers, type 0 when finished:");
+
         while (true)
         {
-            console.write("enter a number:");
-            string input = console.readline();
-            if (int.tryParse(input,out int number))
-        }
-        if(numbers = 0)
-        {
-            break;
-        }
-        nombres.add(numbers);
-        else
-        {
-            console.writeling("invalid number");
-        }
-        if(numbers.count > 0)
-        {
-            int sum = numbers.sum();
-            console.writeling($"the sum of the numbers is {sum}");
-            double average = numbers.average();
-            console.writeling($"the average of the numbers is {average}");
-            int max = numbers.max();
-            console.writeling($"the max of the numbers is {max}");
-            int smallestpositive = numbers.where(n => n > 0).min ();
-            console.writeling($"the smallest positive number is {smallestpositive}");
-            numbers.sort();
-            console.writeling("the numbers sorted are:");
-            foreach(int number in numbers
+            Console.Write("Enter a number: ");
+            string input = Console.ReadLine();
+
+            // Vérification de l'entrée utilisateur
+            if (int.TryParse(input, out int number))
             {
-                console.writeling(number);
+                if (number == 0)
+                {
+                    // Sortir de la boucle si l'utilisateur entre 0
+                    break;
+                }
+
+                numbers.Add(number);
             }
             else
             {
-                console.writeling("no numbers were entered");
+                Console.WriteLine("Invalid number. Please enter a valid integer.");
             }
+        }
+
+        // Vérifier si des nombres ont été saisis
+        if (numbers.Count > 0)
+        {
+            // Calculer la somme
+            int sum = numbers.Sum();
+            Console.WriteLine($"The sum of the numbers is: {sum}");
+
+            // Calculer la moyenne
+            double average = numbers.Average();
+            Console.WriteLine($"The average of the numbers is: {average}");
+
+            // Trouver le maximum
+            int max = numbers.Max();
+            Console.WriteLine($"The maximum of the numbers is: {max}");
+
+            // Trouver le plus petit nombre positif
+            int smallestPositive = numbers.Where(n => n > 0).Min();
+            Console.WriteLine($"The smallest positive number is: {smallestPositive}");
+
+            // Trier et afficher les nombres
+            numbers.Sort();
+            Console.WriteLine("The numbers sorted are:");
+            foreach (int number in numbers)
+            {
+                Console.WriteLine(number);
+            }
+        }
+        else
+        {
+            Console.WriteLine("No numbers were entered.");
         }
     }
 }
